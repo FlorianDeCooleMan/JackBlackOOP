@@ -2,19 +2,19 @@
 {
     internal class Wallet
     {
-        private int Chips;
+        private int chips;
 
-        public Wallet(int Chips)
+        public Wallet(int chips)
         {
-            this.Chips = Chips;
+            this.chips = chips;
         }
-        public void setChips(int Chips)
+        public void setChips(int chips)
         {
-            this.Chips = Chips;
+            this.chips = chips;
         }
         public int getChips()
         {
-            return Chips;
+            return chips;
         }
     }
 }
