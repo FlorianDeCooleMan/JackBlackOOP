@@ -4,30 +4,31 @@
     {
         public enum Suit
         {
-            Hearts,
-            Diamonds,
-            Clubs,
-            Spades
+            Harten,
+            Ruiten,
+            Klaver,
+            Schoppen
         }
 
         public enum Rank
         {
-            Ace,
-            Two,
-            Three,
-            Four,
-            Five,
-            Six,
-            Seven,
-            Eight,
-            Nine,
-            Ten,
-            Jack,
-            Queen,
-            King
+            Aas,
+            Twee,
+            Drie,
+            Vier,
+            Vijf,
+            Zes,
+            Zeven,
+            Acht,
+            Negen,
+            Tien,
+            Boer,
+            Vrouw,
+            Heer
         }
 
         private List<string> cardList;
+        List<string> HandKaarten = new List<string>();
 
         public Deck()
         {
@@ -41,7 +42,7 @@
             {
                 foreach (Rank rank in Enum.GetValues(typeof(Rank)))
                 {
-                    string card = $"{rank} of {suit}";
+                    string card = $"{suit} {rank}";
                     CardList2.Add(card);
                 }
             }
@@ -76,6 +77,28 @@
         {
             ShuffleCardsInPlace(cardList);
         }
-
+        public void HandAdd()
+        {
+            String EersteKaart = cardList[0];
+            Console.WriteLine(EersteKaart+" is toegevoegd aan je hand");
+            cardList.RemoveAt(0);
+            HandKaarten.Add(EersteKaart);
+            
+        }
+        public void PrintHand()
+        {
+            if (HandKaarten.Count != 0)
+            {
+                Console.WriteLine("Je Hand:");
+                foreach (string card in HandKaarten)
+                {
+                    Console.WriteLine(card);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Je hand is leeg :(");
+            }
+        }
     }
 }

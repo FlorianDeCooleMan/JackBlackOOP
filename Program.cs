@@ -16,6 +16,7 @@ namespace JackBlackOOP
             Deck deck = new Deck();
             Dealer dealer = new Dealer();
             Player player = new Player();
+            Hand hand = new Hand();
             Punten puntenDealer = new Punten(0);
             Wallet walletDealer = new Wallet(1000);
 
@@ -28,7 +29,9 @@ namespace JackBlackOOP
                 System.Console.WriteLine("3 om je chip saldo te zien");
                 System.Console.WriteLine("4 om in te leggen");
                 System.Console.WriteLine("5 om een punt toe te voegen");
-                System.Console.WriteLine("6 om uit het leven te stappen");
+                System.Console.WriteLine("6 om een kaart aan je hand toe te voegen");
+                System.Console.WriteLine("7 om je hand te zien");
+                System.Console.WriteLine("8 om uit het leven te stappen");
                 string speel = Console.ReadLine();
                 switch (speel)
                 {
@@ -56,7 +59,7 @@ namespace JackBlackOOP
                             }
                             else
                             {
-                                Console.WriteLine("Dat mag niet! Vul een getal in");
+                                Console.WriteLine("Dat mag niet! Vul een geldig getal in");
                                 goedGetal = false;
                             }
                         }
@@ -67,6 +70,12 @@ namespace JackBlackOOP
                         Console.WriteLine("Je hebt nu "+puntenDealer.getPunten()+" punten");
                         break;
                     case "6":
+                        deck.HandAdd();
+                        break;
+                    case "7":
+                        deck.PrintHand();
+                        break;
+                    case "8":
                         System.Console.WriteLine("BOEM!");
                         Console.WriteLine("/\\/\\/\\/\\______________");
                         life = false;
