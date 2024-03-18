@@ -12,7 +12,6 @@ namespace JackBlackOOP
         {
             Console.OutputEncoding = Encoding.UTF8;
 
-            Card card = new Card();
             Deck deck = new Deck();
             Dealer dealer = new Dealer();
             Player player = new Player();
@@ -69,12 +68,12 @@ namespace JackBlackOOP
                         puntenDealer.setPunten(puntenDealer.getPunten() +1);
                         Console.WriteLine("Je hebt nu "+puntenDealer.getPunten()+" punten");
                         break;
-                    case "6":
+/*                    case "6":
                         deck.HandAdd();
                         break;
                     case "7":
                         deck.PrintHand();
-                        break;
+                        break;*/
                     case "8":
                         System.Console.WriteLine("BOEM!");
                         Console.WriteLine("/\\/\\/\\/\\______________");

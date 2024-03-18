@@ -2,7 +2,7 @@
 {
     internal class Card
     {
-            public enum Suit
+        public enum Suit
         {
             Harten,
             Ruiten,
@@ -27,26 +27,17 @@
             Heer
         }
 
-        private List<string> cardList;
+        private Suit suit;
+        private Rank rank;
 
-        public Deck()
+        public Card(Suit suit, Rank rank)
         {
-            cardList = CardList1();
+            this.suit = suit;
+            this.rank = rank;
         }
-
-        private List<string> CardList1()
+        public override string ToString()
         {
-            List<string> CardList2 = new List<string>();
-            foreach (Suit suit in Enum.GetValues(typeof(Suit)))
-            {
-                foreach (Rank rank in Enum.GetValues(typeof(Rank)))
-                {
-                    string card = $"{suit} {rank}";
-                    CardList2.Add(card);
-                }
-            }
-
-            return CardList2;
+            return $"{suit} {rank}";
         }
     }
 }

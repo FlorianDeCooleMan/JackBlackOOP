@@ -2,54 +2,26 @@
 {
     internal class Deck
     {
-        public enum Suit
-        {
-            Harten,
-            Ruiten,
-            Klaver,
-            Schoppen
-        }
-
-        public enum Rank
-        {
-            Aas,
-            Twee,
-            Drie,
-            Vier,
-            Vijf,
-            Zes,
-            Zeven,
-            Acht,
-            Negen,
-            Tien,
-            Boer,
-            Vrouw,
-            Heer
-        }
-
-        private List<string> cardList;
+        private List<Card> cardList = new List<Card>();
         List<string> HandKaarten = new List<string>();
 
         public Deck()
         {
-            cardList = CardList1();
+            createUniqueDeck();
         }
 
-        private List<string> CardList1()
+        private void createUniqueDeck()
         {
-            List<string> CardList2 = new List<string>();
-            foreach (Suit suit in Enum.GetValues(typeof(Suit)))
+            foreach (Card.Suit suit in Enum.GetValues(typeof(Card.Suit)))
             {
-                foreach (Rank rank in Enum.GetValues(typeof(Rank)))
+                foreach (Card.Rank rank in Enum.GetValues(typeof(Card.Rank)))
                 {
-                    string card = $"{suit} {rank}";
-                    CardList2.Add(card);
+                    Card card = new Card(suit, rank);
+                    cardList.Add(card);
                 }
             }
-
-            return CardList2;
         }
-        private void ShuffleCardsInPlace(List<string> cardList)
+        private void ShuffleCardsInPlace(List <Card> cardList)
         {
             Random random = new Random();
             int n = cardList.Count;
@@ -58,7 +30,7 @@
             {
                 n--;
                 int k = random.Next(n + 1);
-                string value = cardList[k];
+                Card value = cardList[k];
                 cardList[k] = cardList[n];
                 cardList[n] = value;
             }
@@ -68,7 +40,7 @@
         public void PrintDeck()
         {
             Console.WriteLine("Inhoud van het deck:");
-            foreach (string card in cardList)
+            foreach (Card card in cardList)
             {
                 Console.WriteLine(card);
             }
@@ -76,29 +48,6 @@
         public void shuffle()
         {
             ShuffleCardsInPlace(cardList);
-        }
-        public void HandAdd()
-        {
-            String EersteKaart = cardList[0];
-            Console.WriteLine(EersteKaart+" is toegevoegd aan je hand");
-            cardList.RemoveAt(0);
-            HandKaarten.Add(EersteKaart);
-            
-        }
-        public void PrintHand()
-        {
-            if (HandKaarten.Count != 0)
-            {
-                Console.WriteLine("Je Hand:");
-                foreach (string card in HandKaarten)
-                {
-                    Console.WriteLine(card);
-                }
-            }
-            else
-            {
-                Console.WriteLine("Je hand is leeg :(");
-            }
         }
     }
 }
