@@ -2,8 +2,7 @@
 {
     internal class Deck
     {
-        private List<Card> cardList = new List<Card>();
-        List<string> HandKaarten = new List<string>();
+        internal static List<Card> cardList = new List<Card>();
 
         public Deck()
         {

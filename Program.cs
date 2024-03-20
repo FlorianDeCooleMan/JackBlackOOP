@@ -68,12 +68,12 @@ namespace JackBlackOOP
                         puntenDealer.setPunten(puntenDealer.getPunten() +1);
                         Console.WriteLine("Je hebt nu "+puntenDealer.getPunten()+" punten");
                         break;
-/*                    case "6":
-                        deck.HandAdd();
+                        case "6":
+                        player.Hit();
                         break;
                     case "7":
-                        deck.PrintHand();
-                        break;*/
+                        hand.PrintHand();
+                        break;
                     case "8":
                         System.Console.WriteLine("BOEM!");
                         Console.WriteLine("/\\/\\/\\/\\______________");

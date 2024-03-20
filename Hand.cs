@@ -2,15 +2,15 @@
 {
     internal class Hand
     {
-        List<Card> HandKaarten = new List<Card>();
+        internal static List<Card> HandKaarten = new List<Card>();
 
-        public void HandAdd()
+/*        public void HandAdd()
         {
             Card EersteKaart = Deck.cardList[0];
             Console.WriteLine(EersteKaart + " is toegevoegd aan je hand");
-            cardList.RemoveAt(0);
+            Deck.cardList.RemoveAt(0);
             HandKaarten.Add(EersteKaart);
-        }
+        }*/
         public void PrintHand()
         {
             if (HandKaarten.Count != 0)
