@@ -2,19 +2,31 @@
 {
     internal class Player
     {
-        public void Hit()
+        internal List<Card> HandKaarten = new List<Card>();
+        public void Hit(Card card)
         {
-            for (int i = 0; i < 2; i++)
-            {
-                Card EersteKaart = Deck.cardList[0];
-                Console.WriteLine(EersteKaart + " is toegevoegd aan je hand");
-                Deck.cardList.RemoveAt(0);
-                Hand.HandKaarten.Add(EersteKaart);
-            }
+                Console.WriteLine(card + " is toegevoegd aan je hand");
+               
+                HandKaarten.Add(card);
         }
         public void Stand()
         {
 /*            hier komt de stand*/
+        }
+        public void PrintHand()
+        {
+            if (HandKaarten.Count != 0)
+            {
+                Console.WriteLine("Je Hand:");
+                foreach (Card card in HandKaarten)
+                {
+                    Console.WriteLine(card);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Je hand is leeg :(");
+            }
         }
     }
 }

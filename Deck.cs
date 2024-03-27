@@ -2,7 +2,7 @@
 {
     internal class Deck
     {
-        internal static List<Card> cardList = new List<Card>();
+        internal List<Card> cardList = new List<Card>();
 
         public Deck()
         {
@@ -47,6 +47,12 @@
         public void shuffle()
         {
             ShuffleCardsInPlace(cardList);
+        }
+        public Card drawCard()
+        {
+            Card EersteKaart = cardList[0];
+            cardList.RemoveAt(0);
+            return cardList[0];
         }
     }
 }

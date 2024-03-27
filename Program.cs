@@ -14,7 +14,8 @@ namespace JackBlackOOP
 
             Deck deck = new Deck();
             Dealer dealer = new Dealer();
-            Player player = new Player();
+            Player player1 = new Player();
+            Player player2 = new Player();
             Hand hand = new Hand();
             Punten puntenDealer = new Punten(0);
             Wallet walletDealer = new Wallet(1000);
@@ -69,15 +70,18 @@ namespace JackBlackOOP
                         Console.WriteLine("Je hebt nu "+puntenDealer.getPunten()+" punten");
                         break;
                         case "6":
-                        player.Hit();
+                        player1.Hit(deck.drawCard());
                         break;
                     case "7":
-                        hand.PrintHand();
+                        player1.PrintHand();
                         break;
                     case "8":
                         System.Console.WriteLine("BOEM!");
                         Console.WriteLine("/\\/\\/\\/\\______________");
                         life = false;
+                        break;
+                    case "9":
+                        player2.PrintHand();
                         break;
                     default:
                         Console.WriteLine("Nuh uh dat mag niet");
