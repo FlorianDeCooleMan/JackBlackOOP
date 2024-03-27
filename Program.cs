@@ -70,7 +70,7 @@ namespace JackBlackOOP
                         Console.WriteLine("Je hebt nu "+puntenDealer.getPunten()+" punten");
                         break;
                         case "6":
-                        player1.Hit(deck.drawCard());
+                        dealer.Hit(player2, deck.drawCard());
                         break;
                     case "7":
                         player1.PrintHand();

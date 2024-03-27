@@ -5,13 +5,11 @@
         internal List<Card> HandKaarten = new List<Card>();
         public void Hit(Card card)
         {
-                Console.WriteLine(card + " is toegevoegd aan je hand");
-               
-                HandKaarten.Add(card);
+            Console.WriteLine("Ik wil Hitten!:");
         }
         public void Stand()
         {
-/*            hier komt de stand*/
+            Console.WriteLine("Ik wil Standen!:");
         }
         public void PrintHand()
         {
