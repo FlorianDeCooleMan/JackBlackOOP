@@ -12,7 +12,7 @@
 
         public enum Rank
         {
-            Aas,
+            Aas = 1,
             Twee,
             Drie,
             Vier,
@@ -29,6 +29,7 @@
 
         private Suit suit;
         private Rank rank;
+        private int value;
 
         public Card(Suit suit, Rank rank)
         {

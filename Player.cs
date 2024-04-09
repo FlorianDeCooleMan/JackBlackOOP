@@ -3,7 +3,7 @@
     internal class Player
     {
         internal List<Card> HandKaarten = new List<Card>();
-        public void Hit(Card card)
+        public void Hit()
         {
             Console.WriteLine("Ik wil Hitten!:");
         }

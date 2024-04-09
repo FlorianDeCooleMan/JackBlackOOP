@@ -20,7 +20,9 @@
                 }
             }
         }
-        private void ShuffleCardsInPlace(List <Card> cardList)
+
+
+            private void ShuffleCardsInPlace(List <Card> cardList)
         {
             Random random = new Random();
             int n = cardList.Count;
