@@ -18,7 +18,6 @@ namespace JackBlackOOP
             Punten puntenDealer = new Punten(0);
             Wallet walletDealer = new Wallet(1000);
 
-            List<int> PlayerCountList = new List<int>();
             List<Player> players = new List<Player>();
 
 
@@ -38,7 +37,6 @@ namespace JackBlackOOP
                     {
                         Player player = new Player();
                         players.Add(player);
-                        PlayerCountList.Add(i);
                     }
                 }
                 else
@@ -46,19 +44,31 @@ namespace JackBlackOOP
                     life = false;
                 }
             }
-
-/*            while (walletDealer.getChips() > 0 & life == true)*/
+            System.Console.WriteLine("Oke dan kunnen we nu beginnen met het spelen!");
+            System.Console.WriteLine("Wil je het deck shufflen? y/n");
+            string shuffle = Console.ReadLine();
+            switch (shuffle)
             {
+                case "y":
+                    deck.shuffle(); System.Console.WriteLine("Je deck is geschud!"); break;
+                case "n":
+                    System.Console.WriteLine("Oke dan gaan we door zonder te schudden"); break;
+            }
+
+            /*            while (walletDealer.getChips() > 0 & life == true & deck.cardList.Count > 10)*/
+            {
+                System.Console.WriteLine(deck.cardList.Count);
                 foreach (Player player in players)
                 {
                     dealer.Hit(player, deck.drawCard());
                     dealer.Hit(player, deck.drawCard());
+
                 }
-                    foreach (Player player in players)
+                foreach (Player player in players)
                 {
                     Random rnd = new Random();
                     int dice = rnd.Next(1, 3);
-                    if (dice == 1)
+                    if (player.HandWaarde() <= 14)
                     {
                         player.Hit();
                     }

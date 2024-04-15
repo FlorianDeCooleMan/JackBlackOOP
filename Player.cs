@@ -19,12 +19,22 @@
                 foreach (Card card in HandKaarten)
                 {
                     Console.WriteLine(card);
+                    Console.WriteLine(card.GetValue());
                 }
             }
             else
             {
                 Console.WriteLine("Je hand is leeg :(");
             }
+        }
+        public int HandWaarde()
+        {
+            int handWaarde = 0;
+            foreach (Card card in HandKaarten)
+            {
+                handWaarde += card.GetValue();
+            }
+            return handWaarde;
         }
     }
 }
