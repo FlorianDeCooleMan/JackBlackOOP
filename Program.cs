@@ -57,28 +57,27 @@ namespace JackBlackOOP
                     System.Console.WriteLine("Dat mag niet! dat worden puntjes aftrek!"); break;
 
             }
-            foreach (Player player in players)
-            {
-                if (player.Wallet.getChips() > 500) {
-                    System.Console.WriteLine("Hmmm, ik zet 400 in!");
-                int currentChips = player.Wallet.getChips();
-                player.Wallet.setChips(player.Wallet.getChips()-400);
-                }
-                else
-                {
-                    System.Console.WriteLine("Alles of niets! Ik zet alles in!");
-                    int inzet = player.Wallet.getChips();
-                    player.Wallet.setChips(player.Wallet.getChips() - player.Wallet.getChips());
-                }
-                
-                Console.WriteLine("Wallet van speler bijgewerkt naar: " + player.Wallet.getChips() + " chips.");
-            }
 
             while (walletDealer.getChips() > 0 & life == true & deck.cardList.Count > 10)
             {
 /*                System.Console.WriteLine(deck.cardList.Count);*/
                 foreach (Player player in players)
                 {
+
+                    if (player.Wallet.getChips() > 500)
+                    {
+                        System.Console.WriteLine("Hmmm, ik zet 400 in!");
+                        int currentChips = player.Wallet.getChips();
+                        player.Wallet.setChips(player.Wallet.getChips() - 400);
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("Alles of niets! Ik zet alles in!");
+                        int inzet = player.Wallet.getChips();
+                        player.Wallet.setChips(player.Wallet.getChips() - player.Wallet.getChips());
+                    }
+
+                    Console.WriteLine("Wallet van speler bijgewerkt naar: " + player.Wallet.getChips() + " chips.");
 
                     dealer.Hit(player, deck.drawCard());
                     dealer.Hit(player, deck.drawCard());
