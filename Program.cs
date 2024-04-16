@@ -16,7 +16,7 @@ namespace JackBlackOOP
             Dealer dealer = new Dealer();
             Hand hand = new Hand();
             Punten puntenDealer = new Punten(0);
-            Wallet walletDealer = new Wallet(1000);
+            Wallet walletDealer = new Wallet(10000);
 
             List<Player> players = new List<Player>();
 
@@ -70,27 +70,25 @@ namespace JackBlackOOP
                     int inzet = player.Wallet.getChips();
                     player.Wallet.setChips(player.Wallet.getChips() - player.Wallet.getChips());
                 }
-                // Controle afdrukken
+                
                 Console.WriteLine("Wallet van speler bijgewerkt naar: " + player.Wallet.getChips() + " chips.");
             }
 
             while (walletDealer.getChips() > 0 & life == true & deck.cardList.Count > 10)
             {
-                System.Console.WriteLine(deck.cardList.Count);
+/*                System.Console.WriteLine(deck.cardList.Count);*/
                 foreach (Player player in players)
                 {
-                    dealer.Hit(player, deck.drawCard());
-                    dealer.Hit(player, deck.drawCard());
 
-                }
-                foreach (Player player in players)
-                {
+                    dealer.Hit(player, deck.drawCard());
+                    dealer.Hit(player, deck.drawCard());
+                    dealer.DealerHit(deck.drawCard());
+                    dealer.PrintHand();
                     Random rnd = new Random();
                     int dice = rnd.Next(1, 3);
                     if (player.HandWaarde() <= 16 & dice == 1)
                     {
                         player.Hit();
-
                     }
                     else
                     {
@@ -107,8 +105,8 @@ namespace JackBlackOOP
                         default:
                             System.Console.WriteLine("dat mag niet! dat worden puntjes aftrek!"); break;
                     }
-
-
+                    dealer.HandKaartenDealer.Clear();
+                    System.Console.WriteLine("----------------------------------");
                 }
 
             }
