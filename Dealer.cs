@@ -22,7 +22,6 @@ namespace JackBlackOOP
                 foreach (Card card in HandKaartenDealer)
                 {
                     Console.WriteLine(card);
-                    Console.WriteLine(card.GetValue());
                 }
             }
             else

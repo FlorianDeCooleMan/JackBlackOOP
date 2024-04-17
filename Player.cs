@@ -28,7 +28,6 @@
                 foreach (Card card in HandKaarten)
                 {
                     Console.WriteLine(card);
-                    Console.WriteLine(card.GetValue());
                 }
             }
             else

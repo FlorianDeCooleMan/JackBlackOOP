@@ -58,7 +58,7 @@ namespace JackBlackOOP
 
             }
 
-            while (walletDealer.getChips() > 0 & life == true & deck.cardList.Count > 10)
+/*            while (walletDealer.getChips() > 0 & life == true & deck.cardList.Count > 10)*/
             {
 /*                System.Console.WriteLine(deck.cardList.Count);*/
                 foreach (Player player in players)
@@ -82,7 +82,10 @@ namespace JackBlackOOP
                     dealer.Hit(player, deck.drawCard());
                     dealer.Hit(player, deck.drawCard());
                     dealer.DealerHit(deck.drawCard());
+                    player.PrintHand();
+                    Console.WriteLine("de hand van de player heeft de waarde: " + player.HandWaarde());
                     dealer.PrintHand();
+                    Console.WriteLine("de hand van de dealer heeft de waarde: "+dealer.HandWaarde());
                     Random rnd = new Random();
                     int dice = rnd.Next(1, 3);
                     if (player.HandWaarde() <= 16 & dice == 1)
@@ -99,12 +102,49 @@ namespace JackBlackOOP
                     {
                         case "y":
                             dealer.Hit(player, deck.drawCard()); System.Console.WriteLine("je hebt het kaartje gegeven!"); break;
+
                         case "n":
-                            System.Console.WriteLine("je hebt het kaartje niet gegeven!"); break;
+                            System.Console.WriteLine("je hebt het kaartje niet gegeven!");
+                            while (dealer.HandWaarde() < 17)
+                            {
+                                dealer.DealerHit(deck.drawCard());
+                                dealer.PrintHand();
+                                Console.WriteLine("de hand van de dealer heeft de waarde: " + dealer.HandWaarde());
+                            }
+                            if(dealer.HandWaarde() > 21)
+                            {
+                                Console.WriteLine("de speler heeft gewonnen!");
+                                Console.WriteLine("waarde speler: " + player.HandWaarde() + " waarde dealer: " + dealer.HandWaarde());
+                            }
+                            else if (player.HandWaarde() > 21)
+                            {
+                                Console.WriteLine("de dealer heeft gewonnen!");
+                                Console.WriteLine("waarde speler: " + player.HandWaarde() + " waarde dealer: " + dealer.HandWaarde());
+                            }
+                            else if (dealer.HandWaarde() < player.HandWaarde())
+                            {
+                                Console.WriteLine("de speler heeft gewonnen!");
+                                Console.WriteLine("waarde speler: " + player.HandWaarde() + " waarde dealer: " + dealer.HandWaarde());
+                            }
+                            else if (dealer.HandWaarde() == player.HandWaarde())
+                            {
+                                Console.WriteLine("PUSH!");
+                                Console.WriteLine("waarde speler: " + player.HandWaarde() + " waarde dealer: " + dealer.HandWaarde());
+                            }
+                            else if (dealer.HandWaarde() > player.HandWaarde())
+                            {
+                                Console.WriteLine("de dealer heeft gewonnen!");
+                                Console.WriteLine("waarde speler: " + player.HandWaarde() + " waarde dealer: " + dealer.HandWaarde());
+                            }               
+                            else
+                            {
+                                Console.WriteLine("ik snap er niks meer van");
+                                Console.WriteLine("waarde speler: " + player.HandWaarde() + " waarde dealer: " + dealer.HandWaarde());
+                            }
+                                break;
                         default:
                             System.Console.WriteLine("dat mag niet! dat worden puntjes aftrek!"); break;
                     }
-                    dealer.HandKaartenDealer.Clear();
                     System.Console.WriteLine("----------------------------------");
                 }
 
