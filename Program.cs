@@ -86,6 +86,11 @@ namespace JackBlackOOP
                     Console.WriteLine("de hand van de player heeft de waarde: " + player.HandWaarde());
                     dealer.PrintHand();
                     Console.WriteLine("de hand van de dealer heeft de waarde: "+dealer.HandWaarde());
+                    Boolean HitStand = true;
+                    while (HitStand == true)
+                    {
+
+                    
                     Random rnd = new Random();
                     int dice = rnd.Next(1, 3);
                     if (player.HandWaarde() <= 16 & dice == 1)
@@ -101,7 +106,14 @@ namespace JackBlackOOP
                     switch (geef)
                     {
                         case "y":
-                            dealer.Hit(player, deck.drawCard()); System.Console.WriteLine("je hebt het kaartje gegeven!"); break;
+                                dealer.Hit(player, deck.drawCard()); System.Console.WriteLine("je hebt het kaartje gegeven!");
+                                if (player.HandWaarde() > 21)
+                                {
+                                    Console.WriteLine("Dealer heeft gewonnen");
+                                    HitStand = false;
+                                }
+                                Console.WriteLine("waarde speler: " + player.HandWaarde() + " waarde dealer: " + dealer.HandWaarde());
+                                break;
 
                         case "n":
                             System.Console.WriteLine("je hebt het kaartje niet gegeven!");
@@ -141,11 +153,13 @@ namespace JackBlackOOP
                                 Console.WriteLine("ik snap er niks meer van");
                                 Console.WriteLine("waarde speler: " + player.HandWaarde() + " waarde dealer: " + dealer.HandWaarde());
                             }
+                                HitStand = false;
                                 break;
                         default:
                             System.Console.WriteLine("dat mag niet! dat worden puntjes aftrek!"); break;
                     }
                     System.Console.WriteLine("----------------------------------");
+                    }
                 }
 
             }
