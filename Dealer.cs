@@ -8,7 +8,6 @@ namespace JackBlackOOP
         public void Hit(Player player, Card card)
         {
             player.HandKaarten.Add(card);
-            Console.WriteLine(card + " is toegevoegd aan je hand");
         }
         public void DealerHit(Card card)
         {

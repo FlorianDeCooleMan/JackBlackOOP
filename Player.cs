@@ -2,6 +2,9 @@
 {
     internal class Player
     {
+        Boolean standbool = false;
+        Boolean hitbool = false;
+
         internal List<Card> HandKaarten = new List<Card>();
         internal Wallet Wallet { get; }
 
@@ -13,18 +16,28 @@
         public void Hit()
         {
             Console.WriteLine("Ik wil Hitten!:");
+            hitbool = true;
+        }
+        public bool GetHitBool()
+        {
+            return hitbool;
         }
 
         public void Stand()
         {
             Console.WriteLine("Ik wil Standen!:");
+            standbool = true;
+        }
+        public bool GetStandBool()
+        {
+            return standbool;
         }
 
         public void PrintHand()
         {
             if (HandKaarten.Count != 0)
             {
-                Console.WriteLine("Je Hand:");
+                Console.WriteLine("De Hand van de speler:");
                 foreach (Card card in HandKaarten)
                 {
                     Console.WriteLine(card);
